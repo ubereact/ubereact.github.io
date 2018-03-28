@@ -1,0 +1,42 @@
+
+
+.container {
+    height: 276px;
+    width: 400px;
+    background-color: antiquewhite;
+}
+
+p{
+	color: white;
+    position: relative;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 5px;
+    font-size: 12px;
+}
+
+.vidz {
+    position: absolute;
+    margin: auto;
+}
+
+h1{
+    color: white;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin: 5px;
+    font-size: 20px
+}
+
+
+.centered {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

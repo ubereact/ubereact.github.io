@@ -1,0 +1,89 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <div class="container">
+        <video class="vidz" id="intro" width="400" >
+          <source id="theSource" src="intro1_1.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+
+        <video class="vidz" id="crash" width="400" hidden="true">
+          <source id="theSource" src="crash.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="container">
+        <h1 id="myText">On March 18th 2018, an Uber Self Driving Car struck and killed a pedestrian</h1>
+        </div>
+        <p id="space">(Click da Space Bar)</p>
+</div>
+    
+    
+<script>
+    
+var intro = document.getElementById("intro");
+var crash = document.getElementById("crash");
+var source = document.getElementById("theSource");
+var myText = document.getElementById("myText");
+var count = 0;
+var iter = getRandomInt(3);
+var state = -1;
+        
+intro.onended = function() {
+    if (count > iter){
+        crash.hidden=false;
+        crash.play();
+        state=2;
+        intro.hidden=true;
+        }
+    else{intro.play();}
+    count=count+1;
+};
+
+crash.onended = function() {
+    myText.innerHTML="You're no better than an Uber Self Driving Car...";
+}
+    
+document.body.onkeyup = function(e){
+    if(e.keyCode == 32){
+        console.log(state);
+        if (state==-2){
+            myText.innerHTML="The car should have been able to stop in time...";
+            state=-1;
+        }
+        if (state==-1){
+            myText.innerHTML="Test if your reflexes could have avoided the collision";
+            state=0;
+        }
+        else if (state==0){
+            myText.innerHTML=" ";
+            intro.play();
+            state=1;
+        }
+        else if (state==1){
+            intro.pause();
+            myText.innerHTML="No one in sight...";
+            setTimeout(playOn, 1000)
+        }
+        else if (state==2){
+            crash.pause();
+            myText.innerHTML="You stopped in time!";
+        }
+    }
+}
+
+function playOn(){
+    intro.play();
+    myText.innerHTML="";
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * Math.floor(max));
+}
+</script>    
+
+
+</body> 
+</html>
